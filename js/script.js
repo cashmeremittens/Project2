@@ -57,10 +57,16 @@ const showPage = (list, page) => {
 function appendPageLinks(list) {
     
     for(var i = 0; i < (Math.floor(list.length/10))+1; i++){
-        var btn = document.createElement("BUTTON");
-        btn.innerHTML = i+1;
-        btn.className = "btn";
-        document.body.appendChild(btn);
+        var a = document.createElement("A");
+        var li = document.createElement("LI");
+        var ul = document.createElement("UL");
+        var div = document.createElement("DIV");
+        div.appendChild(ul);
+        ul.appendChild(li);
+        li.appendChild(a);
+        a.innerHTML = i+1;
+        div.className = "pagination";
+        document.body.appendChild(div);
     }
     
 }
