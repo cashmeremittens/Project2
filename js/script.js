@@ -17,6 +17,8 @@ FSJS project 2 - List Filter and Pagination
    scoped to that function.
 ***/
 
+const list = document.getElementsByClassName('student-item');
+
 
 
 
@@ -35,6 +37,14 @@ FSJS project 2 - List Filter and Pagination
        "invoke" the function 
 ***/
 
+const showPage = (list, page) => {
+    var listItems=[];
+    for(var i = 0; i<10; i++){
+        
+        listItems.push(list[i+10*page]);
+    }
+    return listItems;
+};
 
 
 
