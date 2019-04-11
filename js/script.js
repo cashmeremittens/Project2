@@ -39,13 +39,13 @@ const list = document.getElementsByClassName('student-item');
 
 const showPage = (list, page) => {
     var listItems=[];
-    for(var i = 0; i<10; i++){
+    
+    for(var i = 0; i<(10 || listItems.length); i++){
         
         listItems.push(list[i+10*page]);
     }
     return listItems;
 };
-
 
 
 /*** 
@@ -54,7 +54,17 @@ const showPage = (list, page) => {
 ***/
 
 
+function appendPageLinks(list) {
+    
+    for(var i = 0; i < (Math.floor(list.length/10))+1; i++){
+        var btn = document.createElement("BUTTON");
+        btn.innerHTML = i+1;
+        btn.className = "btn";
+        document.body.appendChild(btn);
+    }
+    
+}
 
 
-
+appendPageLinks(list);
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
