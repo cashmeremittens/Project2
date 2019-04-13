@@ -56,18 +56,22 @@ const showPage = (list, page) => {
 
 function appendPageLinks(list) {
     
+    var div = document.createElement("DIV");
+    div.className = "pagination";
+    var ul = document.createElement("UL");
+    div.appendChild(ul);
+
+    
     for(var i = 0; i < (Math.floor(list.length/10))+1; i++){
         var a = document.createElement("A");
         var li = document.createElement("LI");
-        var ul = document.createElement("UL");
-        var div = document.createElement("DIV");
-        div.appendChild(ul);
         ul.appendChild(li);
         li.appendChild(a);
         a.innerHTML = i+1;
-        div.className = "pagination";
-        document.body.appendChild(div);
     }
+    
+    document.querySelector("div.page").appendChild(div);
+
     
 }
 
