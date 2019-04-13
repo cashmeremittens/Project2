@@ -9,7 +9,7 @@ FSJS project 2 - List Filter and Pagination
 /*** 
    Add your global variables that store the DOM elements you will 
    need to reference and/or manipulate. 
-   
+ 
    But be mindful of which variables should be global and which 
    should be locally scoped to one of the two main functions you're 
    going to create. A good general rule of thumb is if the variable 
@@ -18,7 +18,6 @@ FSJS project 2 - List Filter and Pagination
 ***/
 
 const list = document.getElementsByClassName('student-item');
-
 
 
 
@@ -37,30 +36,36 @@ const list = document.getElementsByClassName('student-item');
        "invoke" the function 
 ***/
 
-const showPage = (list, page) => {
-    var listItems=[];
+function showPage(list, page){
     
+    var listItems=[];
+
     for(var i = 0; i<(10 || listItems.length); i++){
-        
         listItems.push(list[i+10*page]);
     }
-    return listItems;
-};
+    
+    for(var i = list.length; i > 0; i--){
+        list[i-1].remove();
+    }
+    
+    for(var i = 0; i<listItems.length; i++){
+    
+    document.querySelector('ul.student-list').appendChild(listItems[i]);
+    
+    }
+    
+}
 
 
-/*** 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
-***/
 
 
+//this function creates the page link list at the bottom of the page
 function appendPageLinks(list) {
     
     var div = document.createElement("DIV");
     div.className = "pagination";
     var ul = document.createElement("UL");
     div.appendChild(ul);
-
     
     for(var i = 0; i < (Math.floor(list.length/10))+1; i++){
         var a = document.createElement("A");
@@ -69,13 +74,11 @@ function appendPageLinks(list) {
         li.appendChild(a);
         a.innerHTML = i+1;
     }
-    
     document.querySelector("div.page").appendChild(div);
-
-    
-    
 }
 
-
 appendPageLinks(list);
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+
+
+showPage(list,1);
+
