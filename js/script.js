@@ -1,16 +1,26 @@
-
+//global constant
 const list = document.getElementsByClassName('student-item');
+var page = 0;
+
+//function that displays the items form the list
+function showPage(list, page){
+    
+    for(var i = 0; i < list.length; i++){
+        
+        if(i >= (page*10) && i < (page*10)+10){
+            list[i].style.display="block";
+        }
+        else{
+            list[i].style.display="none";
+        }
+    }
+    
+}
 
 
 //this function creates the page link list at the bottom of the page
-function appendPageLinks(list) {
+function appendPageLinks(list, page) {
     
-    var page = 1;
-
-    
-    for(var i = 0; i < list.length; i++){
-        list[i].style.display="none";
-    }
     
     var div = document.createElement("DIV");
     div.className = "pagination";
@@ -61,20 +71,7 @@ function appendPageLinks(list) {
                                                            });
 }
 
-function showPage(list, page){
-    
-    for(var i = 0; i < list.length; i++){
-        
-        if(i >= (page*10) && i < (page*10)+10){
-            list[i].style.display="block";
-        }else{
-            list[i].style.display="none";
-        }
-    }
-    
-}
 
 
-appendPageLinks(list);
-
-
+showPage(list, page);
+appendPageLinks(list, page);
